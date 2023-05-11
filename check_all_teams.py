@@ -3,8 +3,8 @@ from main import *
 
 
 def test_teams():
-    target = 'Cubs'
-    spell_help_list(get_player_list_any('ARI'), target)
+    target = 'Pirates'
+    spell_help_list(get_player_list_any('PIT'), target)
 
 
 test_teams()

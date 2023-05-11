@@ -17,9 +17,10 @@ def get_player_list_any(team_name):
     for x in range(len(team_data)):
         if team_data[x]['bis_team_code'] == team_name:
             team_id = team_data[x]['mlb_org_id']
-        else:
-            print("That team doesn't exist, ending")
-            exit()
+
+    if team_id == '':
+        print("That team doesn't exist!")
+        exit()
 
     player_list = list()
     response = requests.get(f"http://lookup-service-prod.mlb.com/json/named.roster_40.bam?team_id='{team_id}'")
@@ -36,7 +37,6 @@ def get_player_list_chc():
     response_json = response.json()
     response_rows = response_json['roster_40']['queryResults']['row']
     for x in range(len(response_rows)):
-        # print(response_rows[x]['name_display_first_last'])
         player_list_chc.append(response_rows[x]['name_display_first_last'])
     return player_list_chc
 
